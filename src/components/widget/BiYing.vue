@@ -1,6 +1,6 @@
 <!--
  * @LastEditors: whitechiina 1293616053@qq.com
- * @LastEditTime: 2023-02-22 17:18:30
+ * @LastEditTime: 2023-02-23 00:14:10
 -->
 
 <template>
@@ -9,10 +9,9 @@
   </div>
   <div class="biying-model" v-show="data.pop">
     <div class="biying-wall">
-        <div class="biying-img" :style="{ 'background-image': 'url('+ data.imageUrl +')' }">
+        <div class="biying-img" :style="{ 'background-image': 'url('+ data.bingData.url +')' }">
             <div class="biying-story">
-                <h2>123123</h2>
-                <h2>简介</h2>
+                <h2>{{ data.bingData.copyright }}</h2>
                 <div class="biying-tool">
                     <div @click="back">上一页</div>
                     <div @click="prev">下一页</div>
@@ -25,16 +24,29 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, toRefs, onMounted} from 'vue'
+import axios from 'axios'
+import { reactive, onMounted} from 'vue'
+
+// https://api.no0a.cn/bing.html
 
 onMounted(() => {
-    console.log('123')
+    axios({
+        method: "get",
+        url: "https://api.no0a.cn/api/bing/1"
+    }).then((res) => {
+        if (res.status === 200) {
+            data.bingData = res.data.bing;
+        };
+    });
 })
 
 const data = reactive({
-    pop: false,
-    imageUrl: 'https://api.kdcc.cn/img/bingimg/dayimg.jpg'
+    bingData: [],
+    imageUrl: '',
+    imagtext: '',
+    pop: false
 })
+
 
 const openBi = () => {
     data.pop = !data.pop;
@@ -94,6 +106,17 @@ const prev = () => {}
                 bottom: 0;
                 left: 0;
                 background-color: rgba($color: #fff, $alpha: .6);
+                .biying-tool {
+                    display: flex;
+                    align-items: center;
+                    .item {
+                        width: 50px;
+                        height: 50px;
+                        text-align: center;
+                        line-height: 50px;
+                        padding: 20px;
+                    }
+                }
             }
         }
     }

@@ -1,6 +1,6 @@
 /*
  * @LastEditors: whitechiina 1293616053@qq.com
- * @LastEditTime: 2023-02-22 15:05:58
+ * @LastEditTime: 2023-02-22 17:45:41
  */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -22,13 +22,13 @@ export default defineConfig({
     cors: true, // 允许跨域
     hmr: true,
     // 设置代理，根据我们项目实际情况配置
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://xxx.xxx.xxx.xxx:8000',
-    //     changeOrigin: true,
-    //     secure: false,
-    //     rewrite: (path) => path.replace('/api/', '/')
-    //   }
-    // }
+    proxy: {
+      '/HPImageArchive.aspx': {
+        target: 'https://cn.bing.com/',
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace('/HPImageArchive.aspx/', '/')
+      }
+    }
   }
 })
