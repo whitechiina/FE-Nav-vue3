@@ -1,6 +1,6 @@
 <!--
  * @LastEditors: whitechiina 1293616053@qq.com
- * @LastEditTime: 2023-02-23 00:14:10
+ * @LastEditTime: 2023-02-27 10:59:02
 -->
 
 <template>
@@ -13,8 +13,8 @@
             <div class="biying-story">
                 <h2>{{ data.bingData.copyright }}</h2>
                 <div class="biying-tool">
-                    <div @click="back">上一页</div>
-                    <div @click="prev">下一页</div>
+                    <div @click="pageChange(false)">上一页</div>
+                    <div @click="pageChange(true)">下一页</div>
                     <div @click="openBi">关闭</div>
                 </div>
             </div>
@@ -27,23 +27,34 @@
 import axios from 'axios'
 import { reactive, onMounted} from 'vue'
 
-// https://api.no0a.cn/bing.html
+interface Type {
+    bingData: any,
+    imageUrl: String,
+    imagtext: String,
+    index: Number,
+    pop: Boolean
+}
 
 onMounted(() => {
+    getData()
+})
+
+const getData = () => {
     axios({
         method: "get",
-        url: "https://api.no0a.cn/api/bing/1"
+        url: `https://api.no0a.cn/api/bing/${data.index}`
     }).then((res) => {
         if (res.status === 200) {
             data.bingData = res.data.bing;
         };
     });
-})
+}
 
-const data = reactive({
+const data = reactive<Type>({
     bingData: [],
     imageUrl: '',
     imagtext: '',
+    index: 1,
     pop: false
 })
 
@@ -52,11 +63,12 @@ const openBi = () => {
     data.pop = !data.pop;
 }
 
-const back = () => {
-    
+const pageChange = (flag: Boolean) => {
+    if (data.index as any == 0 || data.index as any < 8) {
+        flag? data.index++ : data.index != 0? data.index-- : '';
+        getData();
+    };
 }
-
-const prev = () => {}
 </script>
 
 <style scoped lang="scss">
@@ -64,6 +76,7 @@ const prev = () => {}
     position: fixed;
     top: 30%;
     right: 0px;
+    
 }
 .biying-model {
     position: fixed;
@@ -88,16 +101,16 @@ const prev = () => {}
         align-items: center;
         width: 88vw;
         height: 88vh;
-        border: 10px solid #fff;
-        border-radius: 10px;
-        background-color: #fff;
+        border: 8px solid rgba($color: #fff, $alpha: .1);
+        border-radius: 4px;
+        background-color: rgba($color: #fff, $alpha: 0.3);
         .biying-img {
             width: 100%;
             height: 100%;
             overflow: hidden;
             background-repeat: no-repeat;
             background-size: cover;
-            border-radius: 10px;
+            border-radius: 2px;
             .biying-story {
                 width: 100%;
                 height: 140px;
@@ -106,15 +119,24 @@ const prev = () => {}
                 bottom: 0;
                 left: 0;
                 background-color: rgba($color: #fff, $alpha: .6);
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: space-between;
+                h2 {
+                    color: #efefef;
+                    text-shadow: 0px 0px 0px #efefef, 0px 0px 2px rgb(0 0 0 / 60%), 0px 0px 4px rgb(0 0 0 / 60%);
+                }
                 .biying-tool {
+                    width: 200px;
                     display: flex;
                     align-items: center;
+                    justify-content: space-between;
                     .item {
                         width: 50px;
                         height: 50px;
                         text-align: center;
                         line-height: 50px;
-                        padding: 20px;
                     }
                 }
             }

@@ -1,6 +1,6 @@
 <!--
  * @LastEditors: whitechiina 1293616053@qq.com
- * @LastEditTime: 2023-02-22 15:42:29
+ * @LastEditTime: 2023-02-27 17:10:31
 -->
 <template>
 	<div class="home">
@@ -26,8 +26,6 @@
 	// 引入swiper样式（按需导入）
 	import 'swiper/css'
 	import 'swiper/css/pagination' // 轮播图底面的小圆点
-	import 'swiper/css/navigation' // 轮播图两边的左右箭头
-	import 'swiper/css/scrollbar' // 轮播图的滚动条
 	// 引入swiper核心和所需模块
 	import { Autoplay, Pagination, Navigation, Scrollbar } from 'swiper'
 	const modules = [Autoplay, Pagination, Navigation, Scrollbar]
@@ -43,9 +41,10 @@
 <style lang="scss">
 	.home {
         width: 100%;
-		height: 300px;
+		height: 200px;
+		margin-bottom: 10px;
 		.swiper-slide {
-			height: 300px;
+			height: 200px;
 		}
 		.swiper-button-prev,
 		.swiper-button-next {
@@ -56,7 +55,11 @@
         }
         .swiper-img {
             width: 100%;
-            height: 300px;
+            height: 200px;
+			border-radius: 4px;
+			& :hover {
+				display: none;
+			}
         }
 	}
 </style>

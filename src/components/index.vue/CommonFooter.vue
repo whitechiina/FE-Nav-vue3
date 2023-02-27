@@ -1,11 +1,10 @@
 <!--
  * @LastEditors: whitechiina 1293616053@qq.com
- * @LastEditTime: 2023-02-22 15:06:07
+ * @LastEditTime: 2023-02-24 16:50:43
 -->
 
 <template>
   <div class="footer">
-    底部
   </div>
 </template>
 
@@ -16,7 +15,7 @@ import { ref, reactive, toRefs, onMounted} from 'vue'
 <style scoped lang="scss">
 .footer {
     width: 100%;
-    // height: 200px;
-    // background-color: #1a1818;
+    height: 100px;
+    background-color: #fff;
 }
 </style>

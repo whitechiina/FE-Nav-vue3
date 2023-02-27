@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+html body {
+  background-color: #f2f3f5;
+}
+
 /* html5新增 的布局元素 */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display:block;}
 /* em 和 i 斜体的文字不倾斜 */
