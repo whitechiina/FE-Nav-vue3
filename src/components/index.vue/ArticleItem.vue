@@ -1,10 +1,10 @@
 <!--
  * @LastEditors: whitechiina 1293616053@qq.com
- * @LastEditTime: 2023-02-27 17:10:10
+ * @LastEditTime: 2023-03-03 15:18:00
 -->
 <template>
   <div class="list">
-    <div class="list-item">
+    <div class="list-item" @click="toContent()">
         <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/55687568403b4110b5fe34131f20c584~tplv-k3u1fbpfcp-watermark.awebp?" alt="">
         <div class="list-text">
             <h4>标题</h4>
@@ -15,8 +15,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, toRefs, onMounted} from 'vue'
-
+import { useRouter } from 'vue-router';
+const router = useRouter();
+const toContent = () => {
+    router.push({ path: '/home/article' })
+}
 </script>
 <style scoped lang="scss">
 .list {

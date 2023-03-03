@@ -1,11 +1,11 @@
 <!--
  * @LastEditors: whitechiina 1293616053@qq.com
- * @LastEditTime: 2023-02-27 16:36:11
+ * @LastEditTime: 2023-02-28 09:42:07
 -->
 <template>
     <div>
         <CommonSearch></CommonSearch>
-        <div id="main" :class=" isFixed ? 'is-fixed' : 'txt'" ref="fixedName">
+        <div id="main" :class="isFixed ? 'is-fixed' : 'txt'" ref="fixedName">
             {{ isFixed }}
         </div>
     </div>
@@ -24,7 +24,7 @@ const fixedName = ref(null);
 
 const update = () => {
   y.value = document.documentElement.scrollTop
-  y.value > 50? isFixed.value = true : isFixed.value = false
+  y.value > 54? isFixed.value = true : isFixed.value = false
 }
 
 onUnmounted(() => { window.removeEventListener('scroll', update) })

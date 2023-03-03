@@ -1,10 +1,10 @@
 <!--
  * @LastEditors: whitechiina 1293616053@qq.com
- * @LastEditTime: 2023-02-27 14:58:11
+ * @LastEditTime: 2023-03-03 14:52:57
 -->
 <template>
     <div class="main-list">
-        <div class="main-item" v-for="(item, index) in data.searchWay" :key="index" @click="ToPage(index)">
+        <div class="main-item" v-for="(item, index) in data.searchWay" :key="index" @click="topage(index)">
             <div :class="item.active? 'main-item-active' : '' ">{{ item.name }}</div>
         </div>
     </div>
@@ -13,6 +13,9 @@
 <script setup lang="ts">
 import Vue from 'vue';
 import { ref, reactive, toRefs, onMounted } from 'vue'
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const data = reactive({
     searchWay: [
@@ -24,10 +27,11 @@ const data = reactive({
     ]
 })
 
-const ToPage = (index: number) => {
+const topage = (index: number) => {
     data.searchWay = data.searchWay.map((e, i) => ({
         ...e, active: i === index,
     }));
+    router.push({ path: '/app' })
 }
 
 

@@ -1,10 +1,10 @@
 <!--
  * @LastEditors: whitechiina 1293616053@qq.com
- * @LastEditTime: 2023-02-27 10:59:02
+ * @LastEditTime: 2023-03-02 21:45:02
 -->
 
 <template>
-  <div class="biying" @click="openBi">
+  <div class="biying" @click="open()">
     必应壁纸
   </div>
   <div class="biying-model" v-show="data.pop">
@@ -13,9 +13,9 @@
             <div class="biying-story">
                 <h2>{{ data.bingData.copyright }}</h2>
                 <div class="biying-tool">
-                    <div @click="pageChange(false)">上一页</div>
-                    <div @click="pageChange(true)">下一页</div>
-                    <div @click="openBi">关闭</div>
+                    <div @click="pagechange(false)">上一页</div>
+                    <div @click="pagechange(true)">下一页</div>
+                    <div @click="open()">关闭</div>
                 </div>
             </div>
         </div>
@@ -59,11 +59,11 @@ const data = reactive<Type>({
 })
 
 
-const openBi = () => {
+const open = () => {
     data.pop = !data.pop;
 }
 
-const pageChange = (flag: Boolean) => {
+const pagechange = (flag: Boolean) => {
     if (data.index as any == 0 || data.index as any < 8) {
         flag? data.index++ : data.index != 0? data.index-- : '';
         getData();

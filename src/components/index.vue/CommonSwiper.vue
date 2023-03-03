@@ -1,11 +1,11 @@
 <!--
  * @LastEditors: whitechiina 1293616053@qq.com
- * @LastEditTime: 2023-02-27 17:10:31
+ * @LastEditTime: 2023-02-28 09:43:32
 -->
 <template>
 	<div class="home">
 		<swiper
-			:modules="modules"
+			:modules="module"
 			:loop="true"
 			:slides-per-view="1"
 			:autoplay="{ delay: 4000, disableOnInteraction: false }"
@@ -28,7 +28,7 @@
 	import 'swiper/css/pagination' // 轮播图底面的小圆点
 	// 引入swiper核心和所需模块
 	import { Autoplay, Pagination, Navigation, Scrollbar } from 'swiper'
-	const modules = [Autoplay, Pagination, Navigation, Scrollbar]
+	const module = [Autoplay, Pagination, Navigation, Scrollbar]
     
     const data = reactive({
         imgData: [
