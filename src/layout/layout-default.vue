@@ -1,18 +1,21 @@
 <!--
  * @LastEditors: whitechiina 1293616053@qq.com
- * @LastEditTime: 2023-03-03 15:27:22
+ * @LastEditTime: 2023-03-04 17:46:56
 -->
 
 <template>
     <div id="content">
+      <!-- 背景图 -->
+      <div id="background">
+        <div id="bgs"></div>
+      </div>
       <CommonHeader></CommonHeader>
       <div id="main">
         <div class="main-left">
           <CommonLeft></CommonLeft>
         </div>
         <div class="main-mid">
-          <CommonSwiper></CommonSwiper>
-          <CommonMid></CommonMid>
+          <RouterView></RouterView>
         </div>
         <div class="main-right">
           <CommonRight></CommonRight>
@@ -34,6 +37,23 @@ import BiYing from "@/components/widget/BiYing.vue";
 </script>
 
 <style scoped lang="scss">
+#background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -99;
+}
+#bgs {
+  position: absolute;
+  background-image: url("../assets/bg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  width: 100%;
+  height: 100%;
+}
 #main {
 display: flex;
 position: relative;

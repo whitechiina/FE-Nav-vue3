@@ -1,6 +1,6 @@
 /*
  * @LastEditors: whitechiina 1293616053@qq.com
- * @LastEditTime: 2023-03-03 15:19:09
+ * @LastEditTime: 2023-03-03 16:05:36
  */
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -18,13 +18,13 @@ const routes = [
     component: () => import('@/layout/layout-default.vue'),
     children: [
       {
-        path: '/home',
+        path: '/',
         name: 'Home',
-        component: () => import('@/layout/layout-default.vue'),
+        component: () => import('@/view/home.vue'),
         meta: { title: '首页', keepAlive: false }
       },
       {
-        path: '/home/article',
+        path: '/article',
         name: 'article',
         component: () => import('@/view/article.vue'),
         meta: { title: '文章页', keepAlive: false }

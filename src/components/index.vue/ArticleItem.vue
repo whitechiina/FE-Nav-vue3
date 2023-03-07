@@ -1,6 +1,6 @@
 <!--
  * @LastEditors: whitechiina 1293616053@qq.com
- * @LastEditTime: 2023-03-03 15:18:00
+ * @LastEditTime: 2023-03-03 15:44:30
 -->
 <template>
   <div class="list">
@@ -18,7 +18,7 @@
 import { useRouter } from 'vue-router';
 const router = useRouter();
 const toContent = () => {
-    router.push({ path: '/home/article' })
+    router.push({ path: '/article' })
 }
 </script>
 <style scoped lang="scss">

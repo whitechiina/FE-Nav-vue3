@@ -1,18 +1,22 @@
 <!--
  * @LastEditors: whitechiina 1293616053@qq.com
- * @LastEditTime: 2023-02-27 21:36:40
+ * @LastEditTime: 2023-03-03 17:20:49
 -->
 <template>
   <div class="header">
     <div class="header-main">
-      <div class="header-logo">logo</div>
+      <div class="header-logo" @click="Tohome">logo</div>
       <div class="header-tools">工具栏</div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, toRefs, onMounted} from 'vue'
+import { useRouter } from "vue-router";
+const router = useRouter();
+const Tohome = () => {
+  router.push({ path: '/' })
+}
 
 </script>
 <style scoped lang="scss">

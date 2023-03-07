@@ -1,11 +1,11 @@
 <!--
  * @LastEditors: whitechiina 1293616053@qq.com
- * @LastEditTime: 2023-03-02 21:45:02
+ * @LastEditTime: 2023-03-03 16:28:45
 -->
 
 <template>
   <div class="biying" @click="open()">
-    必应壁纸
+    必应壁纸<i class="iconfont icon-biying"></i>
   </div>
   <div class="biying-model" v-show="data.pop">
     <div class="biying-wall">
